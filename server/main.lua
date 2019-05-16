@@ -1,3 +1,7 @@
+--       Licensed under: AGPLv3        --
+--  GNU AFFERO GENERAL PUBLIC LICENSE  --
+--     Version 1.0.1, 15/05/2019     --
+
 ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -22,7 +26,7 @@ function AddLicense(target, type, cb)
 end
 
 function RemoveLicense(target, type, cb)
-	
+
 	local xPlayer = ESX.GetPlayerFromId(target)
 
 	MySQL.Async.execute(
@@ -41,7 +45,7 @@ function RemoveLicense(target, type, cb)
 end
 
 function GetLicense(type, cb)
-	
+
 	MySQL.Async.fetchAll(
 		'SELECT * FROM licenses WHERE type = @type',
 		{
@@ -62,9 +66,9 @@ function GetLicense(type, cb)
 end
 
 function GetLicenses(target, cb)
-	
+
 	local xPlayer = ESX.GetPlayerFromId(target)
-		
+
 	MySQL.Async.fetchAll(
 		'SELECT * FROM user_licenses WHERE owner = @owner',
 		{
@@ -116,9 +120,9 @@ function GetLicenses(target, cb)
 end
 
 function CheckLicense(target, type, cb)
-	
+
 	local xPlayer = ESX.GetPlayerFromId(target)
-		
+
 	MySQL.Async.fetchAll(
 		'SELECT COUNT(*) as count FROM user_licenses WHERE type = @type AND owner = @owner',
 		{
@@ -139,14 +143,14 @@ function CheckLicense(target, type, cb)
 end
 
 function GetLicensesList(cb)
-	
+
 	MySQL.Async.fetchAll(
 		'SELECT * FROM licenses',
 		{
 			['@type'] = type
 		},
 		function(result)
-			
+
 			local licenses = {}
 
 			for i=1, #result, 1 do
