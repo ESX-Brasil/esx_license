@@ -11,7 +11,7 @@ fvm install --save --folder=esx esx-org/esx_license
 
 2) Manually
 
-- Download https://github.com/ESX-Org/esx_license/releases/latest
+- Download https://github.com/ESX-Brasil/esx_license/releases/latest
 - Put it in [esx] directory
 
 
